@@ -36,11 +36,13 @@ const containerProps: any = {
 function convertTo3d()
 {
     if (this.proj) return;
+    Object.defineProperties(this, containerProps);
+    
     this.proj = new Projection3d(this.transform);
     this.toLocal = Container3d.prototype.toLocal;
     this.isFrontFace = Container3d.prototype.isFrontFace;
     this.getDepth = Container3d.prototype.getDepth;
-    Object.defineProperties(this, containerProps);
+    this._render = Container3d.prototype._render;
 }
 
 Container.prototype.convertTo3d = convertTo3d;
@@ -48,12 +50,13 @@ Container.prototype.convertTo3d = convertTo3d;
 Sprite.prototype.convertTo3d = function spriteConvertTo3d()
 {
     if (this.proj) return;
+    convertTo3d.call(this);
     this.calculateVertices = Sprite3d.prototype.calculateVertices;
     this.calculateTrimmedVertices = Sprite3d.prototype.calculateTrimmedVertices;
     this._calculateBounds = Sprite3d.prototype._calculateBounds;
     this.containsPoint = Sprite3d.prototype.containsPoint;
+    this._render = Sprite3d.prototype._render;
     this.pluginName = 'batch2d';
-    convertTo3d.call(this);
 };
 
 Container.prototype.convertSubtreeTo3d = function convertSubtreeTo3d()

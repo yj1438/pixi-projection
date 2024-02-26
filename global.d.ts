@@ -5,16 +5,16 @@ declare namespace GlobalMixins {
 
 	export interface Sprite {
 		_texture: import('@pixi/core').Texture;
-		convertTo2d?(): void;
+		convertTo2d(): void;
 	}
 
 	export interface Container {
-		convertTo2d?(): void;
-		convertSubtreeTo2d?(): void;
+		convertTo2d(): void;
+		convertSubtreeTo2d(): void;
 		convertTo2s(): void;
 		convertSubtreeTo2s(): void;
-		convertTo3d?(): void;
-		convertSubtreeTo3d?(): void;
+		convertTo3d(): void;
+		convertSubtreeTo3d(): void;
 	}
 
 	export interface IPointData {
@@ -27,5 +27,5 @@ declare namespace GlobalMixins {
 
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
 	export interface Spine extends Partial<import('pixi-projection').IDisplayObject3d> {
-    }
+  }
 }

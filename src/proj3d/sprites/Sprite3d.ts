@@ -1,5 +1,5 @@
-import { Sprite } from '@pixi/sprite';
-import { Renderer, Texture } from '@pixi/core';
+import { Sprite, SpriteSource } from '@pixi/sprite';
+import { IBaseTextureOptions, Renderer, Texture } from '@pixi/core';
 import { Projection3d } from '../Projection3d';
 import { IPointData, Matrix } from '@pixi/math';
 import { DisplayObject } from '@pixi/display';
@@ -228,8 +228,12 @@ export class Sprite3d extends Sprite
         }
     }
 
+    /**
+     * @override
+     */
     _render(renderer: Renderer): void
     {
+        super._render(renderer);
         this.calculateVertices();
 
         if (this.culledByFrustrum)
@@ -239,6 +243,9 @@ export class Sprite3d extends Sprite
 
         renderer.batch.setObjectRenderer((renderer as any).plugins[this.pluginName]);
         (renderer as any).plugins[this.pluginName].render(this);
+
+        // z-index
+        this.zIndex = 1000 - Math.abs(this.worldTransform.mat4[14] * 100);
     }
 
     containsPoint(point: IPointData): boolean
@@ -249,6 +256,15 @@ export class Sprite3d extends Sprite
         }
 
         return super.containsPoint(point as any);
+    }
+
+    /**
+     * @override
+     */
+    static from(source: SpriteSource, options?: IBaseTextureOptions) {
+        const sprite2d = Sprite.from(source, options) as Sprite3d;
+        sprite2d.convertTo3d();
+        return sprite2d;
     }
 
     get worldTransform(): Matrix

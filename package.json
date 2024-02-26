@@ -22,6 +22,7 @@
 		"clean": "rimraf dist/* lib/* compile",
 		"start": "run-s watch",
 		"watch": "rollup -cw",
+		"dev": "vite",
 		"prebuild": "run-s clean lint types",
 		"build": "rollup -c",
 		"postbuild": "run-s build:types",
@@ -55,11 +56,6 @@
 			"eslintConfig"
 		]
 	},
-	"eslintConfig": {
-		"extends": [
-			"@pixi/eslint-config"
-		]
-	},
 	"files": [
 		"dist/",
 		"lib/",
@@ -69,6 +65,8 @@
 		"package.json",
 		"README.md"
 	],
+	"dependencies": {
+	},
 	"peerDependencies": {
 		"@pixi/constants": "^6.0.4",
 		"@pixi/core": "^6.0.4",
@@ -86,10 +84,10 @@
 	"devDependencies": {
 		"@microsoft/api-extractor": "7.13.5",
 		"@pixi-build-tools/rollup-configurator": "~1.0.11",
+		"pixi.js": "^6.0.4",
 		"@pixi/constants": "^6.0.4",
 		"@pixi/core": "^6.0.4",
 		"@pixi/display": "^6.0.4",
-		"@pixi/eslint-config": "^2.0.1",
 		"@pixi/graphics": "^6.0.4",
 		"@pixi/math": "^6.0.4",
 		"@pixi/mesh": "^6.0.4",
@@ -99,6 +97,7 @@
 		"@pixi/text": "^6.0.4",
 		"@pixi/utils": "^6.0.4",
 		"@pixi-spine/base": "^3.0.4",
+		"@pixi/eslint-config": "^2.0.1",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@typescript-eslint/parser": "^4.16.1",
 		"clean-package": "^1.0.1",
@@ -109,6 +108,7 @@
 		"rimraf": "^2.5.3",
 		"rollup": "^2.23.1",
 		"tslib": "^2.0.1",
-		"typescript": "^3.9.7"
+		"typescript": "^3.9.7",
+		"vite": "^5.1.4"
 	}
 }
