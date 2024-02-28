@@ -170,7 +170,11 @@ Any 2d elements added to that container will think of it as a simple 2d containe
 
 This way is also **more performant** because **Sprite works faster than Sprite3d. 4x4 matrices ARE VERY SLOW**.
 
-### Sorting
+### Examples
+
+You can find examples in `example` folder. They are not very well documented, but you can see how to use the library there.
+
+### ~~Sorting~~
 
 `pixi-projection` provides extra fields to handle sorting.
 
@@ -179,7 +183,7 @@ This way is also **more performant** because **Sprite works faster than Sprite3d
 
 Those fields can be used with custom sorting solution or with [pixi-layers](https://github.com/pixijs/pixi-display/tree/layers/)
 
-### Culling
+### ~~Culling~~
 
 Will be available after we add it to `@pixi/layers`
 

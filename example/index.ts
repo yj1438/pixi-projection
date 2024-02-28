@@ -57,7 +57,7 @@ let duration = 0;
 app.ticker.add((delta) => {
   duration = (duration + delta * app.ticker.deltaMS) % 4000;
   const pi = duration / 2000 * Math.PI;
-  sprite2.position3d.set(Math.cos(pi) * 300, 0, Math.sin(pi) * 300 + 500);
+  sprite2.position3d.set(Math.cos(pi) * 300, Math.cos(pi) * 300, Math.sin(pi) * 300 + 500);
 
   container.sortChildren();
 });
